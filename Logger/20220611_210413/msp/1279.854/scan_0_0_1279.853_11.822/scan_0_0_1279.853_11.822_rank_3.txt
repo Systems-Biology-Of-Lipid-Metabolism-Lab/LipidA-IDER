@@ -1,0 +1,18 @@
+NAME: Lipid A tetra-acyl C4'-mono-phosphoryl  di-glucosamine [P-C14:0_(OH)/NIL-C14:0_(OH)/C12:0-C14:0_(OH)-NIL/NIL-NIL]
+PRECURSORMZ: 1279.85359201
+PRECURSORTYPE: [M-H]-
+RETENTIONTIME: 709.3062
+Comment: Scan=scan_0_0_1279.853_11.822; filename=ESK010_02_monoP_006_monoP_60V_r1_t1_b1_1279.ms2||L2D=P/4/54/0/3
+Num Peaks: 12
+1279.85359201 3731 "[M-H]-"
+1261.84303 196 "[M-H]-H2O(dehydration)"
+1035.64975 2008 "[M-H]-C3FA(acid)"
+994.6232 1763 "02A2-C3'FA(ketene)"
+976.61263 196 "02A2-C3'FA(acid)"
+708.40879 865 "04A2-C3'FA(ketene)"
+690.39822 98 "04A2-C3'FA(acid)"
+666.39822 147 "C-C3'FA(ketene)"
+648.38766 196 "B-C3'FA(ketene)||C-C3'FA(acid)"
+448.21003 98 "C-C3'FA(acid)-C2'SecFA(acid)"
+96.96907059 367 "Phosphate"
+78.9585059 694 "Phosphate*d"

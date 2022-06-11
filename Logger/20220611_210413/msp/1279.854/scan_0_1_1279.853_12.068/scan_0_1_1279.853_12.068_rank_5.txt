@@ -1,0 +1,24 @@
+NAME: Lipid A tetra-acyl C4'-mono-phosphoryl  di-glucosamine [P-C14:0_(OH)/NIL-C14:0_(OH)/C12:0-C14:0_(OH)-NIL/NIL-NIL]
+PRECURSORMZ: 1279.85359201
+PRECURSORTYPE: [M-H]-
+RETENTIONTIME: 724.065
+Comment: Scan=scan_0_1_1279.853_12.068; filename=ESK010_02_monoP_006_monoP_60V_r1_t1_b1_1279.ms2||L2D=P/4/54/0/3
+Num Peaks: 18
+1279.85359201 4567 "[M-H]-"
+1261.84303 294 "[M-H]-H2O(dehydration)"
+1035.64975 4766 "[M-H]-C3FA(acid)"
+994.6232 633 "02A2-C3'FA(ketene)"
+976.61263 51 "02A2-C3'FA(acid)"
+934.60207 25 "04A2"
+791.4459 25 "[M-H]-C3FA(acid)-C3'FA(acid)"
+708.40879 695 "04A2-C3'FA(ketene)"
+690.39822 204 "04A2-C3'FA(acid)"
+666.39822 36 "C-C3'FA(ketene)"
+648.38766 48 "B-C3'FA(ketene)||C-C3'FA(acid)"
+630.37709 25 "B-C3'FA(acid)"
+490.22059 72 "04A2-C3'FA(acid)-C2'SecFA(acid)"
+448.21003 32 "C-C3'FA(acid)-C2'SecFA(acid)"
+430.19946 38 "B-C3'FA(acid)-C2'SecFA(acid)||C-C3'FA(acid)-C2'SecFA(acid)-C4'Headgroup(-H2O)"
+350.23313 19 "B-C3'FA(acid)-C2'SecFA(acid)-C4'Headgroup(-HPO3)||C-C3'FA(acid)-C2'SecFA(acid)-C4'Headgroup(-H3PO4)"
+96.96907059 230 "Phosphate"
+78.9585059 468 "Phosphate*d"

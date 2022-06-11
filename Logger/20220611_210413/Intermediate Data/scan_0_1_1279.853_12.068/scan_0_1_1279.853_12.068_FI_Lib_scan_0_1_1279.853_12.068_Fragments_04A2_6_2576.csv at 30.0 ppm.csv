@@ -1,0 +1,32 @@
+Ion,Hit,Hit Name,Diff.,Mode
+1036.637,1036.63376352,04A2.Phosphate.C12:0_(OH) acid.C12:0_(OH) ketene.C10:0_(OH) ketene.C10:0_(OH) ketene,3.122,ppm
+1018.624,1018.62319852,04A2.Phosphate.C12:0_(OH) acid.C12:0_(OH) ketene.C10:0_(OH) ketene.C10:1 ketene,0.787,ppm
+934.6151,934.60206952,04A2.Phosphate.C12:0_(OH) acid.NIL.C12:0_(OH) ketene.C16:0 ketene,13.942,ppm
+934.6151,934.60206952,04A2.Phosphate.C14:0_(OH) acid.NIL.C10:0_(OH) ketene.C16:0 ketene,13.942,ppm
+934.6151,934.6020685200001,04A2.Phosphate.C12:0_(OH) acid.C12:0 ketene.C16:0_(OH) ketene.NIL,13.943,ppm
+934.6151,934.6020685200001,04A2.Phosphate.C14:0_(OH) acid.NIL.C16:0_(OH) ketene.C10:0 ketene,13.943,ppm
+934.6151,934.60206852,04A2.Phosphate.C12:0_(OH) acid.C14:0 ketene.C14:0_(OH) ketene.NIL,13.943,ppm
+934.6151,934.60206852,04A2.Phosphate.C12:0_(OH) acid.NIL.C14:0_(OH) ketene.C14:0 ketene,13.943,ppm
+934.6151,934.60206852,04A2.Phosphate.C12:0_(OH) acid.NIL.C16:0_(OH) ketene.C12:0 ketene,13.943,ppm
+934.6151,934.60206852,04A2.Phosphate.C14:0_(OH) acid.C12:0 ketene.C14:0_(OH) ketene.NIL,13.943,ppm
+934.6151,934.60206852,04A2.Phosphate.C14:0_(OH) acid.C14:0 ketene.C12:0_(OH) ketene.NIL,13.943,ppm
+934.6151,934.60206852,04A2.Phosphate.C14:0_(OH) acid.NIL.C12:0_(OH) ketene.C14:0 ketene,13.943,ppm
+934.6151,934.60206852,04A2.Phosphate.C14:0_(OH) acid.NIL.C14:0_(OH) ketene.C12:0 ketene,13.943,ppm
+708.4133,708.4087892100001,04A2.Phosphate.Water.NIL.C10:0_(OH) ketene.C16:0 ketene,6.367,ppm
+708.4133,708.40878852,04A2.Phosphate.C12:0_(OH) acid.C14:0 ketene.NIL.NIL,6.368,ppm
+708.4133,708.40878852,04A2.Phosphate.C14:0_(OH) acid.C12:0 ketene.NIL.NIL,6.368,ppm
+708.4133,708.40878821,04A2.Phosphate.Water.NIL.C12:0_(OH) ketene.C14:0 ketene,6.369,ppm
+708.4133,708.40878821,04A2.Phosphate.Water.NIL.C14:0_(OH) ketene.C12:0 ketene,6.369,ppm
+708.4133,708.40878821,04A2.Phosphate.Water.NIL.C16:0_(OH) ketene.C10:0 ketene,6.369,ppm
+690.3989,690.39822452,04A2.Phosphate.NIL.NIL.C10:0_(OH) ketene.C16:0 ketene,0.978,ppm
+690.3989,690.39822352,04A2.Phosphate.NIL.NIL.C12:0_(OH) ketene.C14:0 ketene,0.98,ppm
+690.3989,690.39822352,04A2.Phosphate.NIL.NIL.C14:0_(OH) ketene.C12:0 ketene,0.98,ppm
+690.3989,690.39822352,04A2.Phosphate.NIL.NIL.C16:0_(OH) ketene.C10:0 ketene,0.98,ppm
+508.2257,508.23115821,04A2.Phosphate.Water.NIL.C14:1 ketene.NIL,10.74,ppm
+508.2257,508.23115852,04A2.Phosphate.C14:1 acid.NIL.NIL.NIL,10.74,ppm
+508.2257,508.23115852,04A2.Phosphate.NIL.NIL.C14:0_(OH) ketene.NIL,10.74,ppm
+490.2227,490.22059351999997,04A2.Phosphate.NIL.NIL.C14:1 ketene.NIL,4.297,ppm
+428.2618,428.26482727999996,04A2.Water.Water.NIL.C14:1 ketene.NIL,7.069,ppm
+428.2618,428.26482759,04A2.Water.C14:1 acid.NIL.NIL.NIL,7.069,ppm
+428.2618,428.26482759,04A2.Water.NIL.NIL.C14:0_(OH) ketene.NIL,7.069,ppm
+410.2528,410.25426259,04A2.Water.NIL.NIL.C14:1 ketene.NIL,3.565,ppm

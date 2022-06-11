@@ -1,0 +1,12 @@
+See chemdraw file for connectivity of fragments,,,,,,,,,,,,,,
+m/z,Name,Formula,Sugar,C4' Headgroup,C1 Headgroup,C3' FA,C3' Sec FA,C2' ketene,C2' Sec FA,C3 FA,C2 ketene,C2 Sec FA,Min Mass %,Max Mass %
+184.0609829,04A2,C8H10NO4,Yes,Yes,,Yes,Yes,Yes,Yes,,,,20,95
+226.0715475,02A2,C10H12NO5,Yes,Yes,,Yes,Yes,Yes,Yes,Yes,,,30,95
+225.087532,24A2,C10H13N2O4,Yes,Yes,Yes,Yes,Yes,Yes,Yes,,Yes,Yes,30,95
+82.02928877,04X0,C4H4NO,Yes,,Yes,,,,,Yes,Yes,Yes,15,80
+40.01872407,13X1,C2H2N,Yes,,,Yes,Yes,Yes,Yes,,,,10,80
+142.0504182,C,C6H8NO3,Yes,Yes,,Yes,Yes,Yes,Yes,,,,10,80
+124.0398535,B,C6H6NO2,Yes,Yes,,Yes,Yes,Yes,Yes,,,,10,80
+142.0504182,Y,C6H8NO3,Yes,,Yes,,,,,Yes,Yes,Yes,10,80
+124.0398535,Z,C6H6NO2,Yes,,Yes,,,,,Yes,Yes,Yes,10,80
+267.0980967,Di-glucosamine,C12H15N2O5,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,99.95,100.05

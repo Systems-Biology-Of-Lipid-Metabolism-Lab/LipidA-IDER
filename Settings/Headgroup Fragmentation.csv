@@ -1,0 +1,8 @@
+Comment,Headgroup String,Fragmentation 1,Fragmentation 2,Fragmentation 3,Fragmentation 4,Fragmentation 5
+HPO3,Phosphate*d,"NIL,-HPO3",,,,
+H3PO4,Phosphate,"Phosphate*d,-H2O","Water,-HPO3","NIL,-H3PO4",,
+H4P2O7,Pyrophosphate,"Pyrophosphate*d,-H2O","Phosphate,-HPO3","Phosphate*d,-H3PO4",,
+H2PO6,Pyrophosphate*d,"Phosphate,-HPO3",,,,
+H5P3O10,Triphosphate,"Triphosphate*d,-H2O","Pyrophosphate,-HPO3","Pyrophosphate*d,-H3PO4","Phosphate*d,-H4P2O7",
+,P+Ara4N,"Phosphate*d,-Ara4N","Phosphate,-Ara4N*d",,,
+,Pyr+EtN,"Phosphate*d,-pEtN","Phosphate,-pEtN*d",,,

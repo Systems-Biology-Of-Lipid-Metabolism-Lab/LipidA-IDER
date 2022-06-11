@@ -1,0 +1,31 @@
+NAME: Lipid A tri-acyl C4'-di-phosphoryl  di-glucosamine [PP-NIL/NIL-C14:0_(OH)/C12:0-NIL-C14:0_(OH)/NIL-NIL]
+PRECURSORMZ: 1133.62664227
+PRECURSORTYPE: [M-H]-
+RETENTIONTIME: 920.2668
+Comment: Scan=scan_0_1_1133.628_15.338; filename=ESK010_02_monoP_005_monoP_50V_r1_t1_b1_1053_1133.ms2||L2D=PP/3/40/0/2
+Num Peaks: 25
+1133.62664227 29101 "[M-H]-"
+1115.61608 720 "[M-H]-H2O(dehydration)||[M-H]-C4'Headgroup(-H2O)"
+1053.66031 85 "[M-H]-C4'Headgroup(-HPO3)"
+1035.64975 2620 "[M-H]-C4'Headgroup(-H3PO4)"
+848.39625 580 "02A2"
+835.47212 351 "[M-H]-C4'Headgroup(-H3PO4)-C2'SecFA(acid)"
+830.38568 228 "02A2-H2O(dehydration)||02A2-C4'Headgroup(-H2O)"
+788.37512 46 "04A2"
+770.36455 69 "04A2-H2O(dehydration)||04A2-C4'Headgroup(-H2O)"
+768.42992 235 "02A2-C4'Headgroup(-HPO3)"
+750.41935 425 "02A2-C4'Headgroup(-H3PO4)"
+728.35399 96 "B||C-H2O(dehydration)"
+710.34343 35 "B-H2O(dehydration)"
+708.40879 211 "04A2-C4'Headgroup(-HPO3)"
+690.39822 170 "04A2-C4'Headgroup(-H3PO4)"
+550.24172 100 "02A2-C4'Headgroup(-H3PO4)-C2'SecFA(acid)"
+528.17636 35 "B-C2'SecFA(acid)||C-C2'SecFA(acid)-C4'Headgroup(-H2O)"
+490.22059 97 "04A2-C4'Headgroup(-H3PO4)-C2'SecFA(acid)"
+466.22059 67 "C-C2'SecFA(acid)-C4'Headgroup(-HPO3)"
+448.21003 120 "B-C2'SecFA(acid)-C4'Headgroup(-HPO3)||C-C2'SecFA(acid)-C4'Headgroup(-H3PO4)"
+430.19946 58 "B-C2'SecFA(acid)-C4'Headgroup(-H3PO4)"
+176.9354015 546 "Pyrophosphate"
+158.9248368 1914 "Pyrophosphate*d"
+96.96907059 500 "Phosphate"
+78.9585059 758 "Phosphate*d"

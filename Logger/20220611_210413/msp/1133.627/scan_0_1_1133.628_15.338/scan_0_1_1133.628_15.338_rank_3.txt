@@ -1,0 +1,24 @@
+NAME: Lipid A tri-acyl C4'-mono-phosphoryl C1-mono-phosphoryl di-glucosamine [P-NIL/NIL-C14:0_(OH)/NIL-NIL-C14:0_(OH)/C12:0-P]
+PRECURSORMZ: 1133.62664232
+PRECURSORTYPE: [M-H]-
+RETENTIONTIME: 920.2668
+Comment: Scan=scan_0_1_1133.628_15.338; filename=ESK010_02_monoP_005_monoP_50V_r1_t1_b1_1053_1133.ms2||L2D=PP/3/40/0/2
+Num Peaks: 18
+1133.62664232 29101 "[M-H]-"
+1115.61608 720 "[M-H]-H2O(dehydration)||[M-H]-C1Headgroup(-H2O)"
+1053.66031 85 "[M-H]-C1Headgroup(-HPO3)"
+1035.64975 2620 "[M-H]-C1Headgroup(-H3PO4)"
+835.47212 351 "[M-H]-C1Headgroup(-H3PO4)-C2SecFA(acid)"
+666.39822 158 "Y"
+648.38766 172 "Y-H2O(dehydration)||Y-C1Headgroup(-H2O)||Z"
+630.37709 46 "Z-H2O(dehydration)||Z-C1Headgroup(-H2O)"
+568.25229 80 "02A2-H2O(dehydration)"
+508.23116 95 "04A2-H2O(dehydration)"
+484.23116 152 "C"
+466.22059 67 "B||C-H2O(dehydration)||C-C4'Headgroup(-H2O)"
+448.21003 120 "B-H2O(dehydration)||B-C4'Headgroup(-H2O)"
+350.23313 79 "Z-C1Headgroup(-H3PO4)-C2SecFA(acid)"
+176.9354015 546 "Pyrophosphate"
+158.9248368 1914 "Pyrophosphate*d"
+96.96907059 500 "Phosphate"
+78.9585059 758 "Phosphate*d"

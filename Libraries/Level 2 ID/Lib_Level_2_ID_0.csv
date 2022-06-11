@@ -1,0 +1,3 @@
+"Logs all the Lipid A (molecular species level) found before; each mz should be unique and condenses information for all structural isomers. (1) remove all headgroups above HG total mz; (2) remove all Sat if Sat# = 0; (3) remove all Unsat if #DBE = 0									",,,,,,,,,,,,
+mz,Acyl,HG mz,C#,Sat#,DBE#,Hydroxyl#,Score,Source Filename,Source Name,Last Accessed Date,Last Accessed Time,L2 Name
+0,0,0,0,0,0,0,100,dummy,nil,nil,nil,nil

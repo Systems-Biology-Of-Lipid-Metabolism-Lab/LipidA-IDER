@@ -1,0 +1,24 @@
+Ion,Hit,Hit Name,Diff.,Mode
+1000.631,1000.6490191199999,B.Phosphate.C12:0_(OH) acid.C12:0_(OH) ketene.C10:0_(OH) ketene.C13:1 ketene,18.007,ppm
+1000.631,1000.6490191199999,B.Phosphate.C12:0_(OH) acid.C12:0_(OH) ketene.C12:0_(OH) ketene.C11:1 ketene,18.007,ppm
+1000.631,1000.6490191199999,B.Phosphate.C12:0_(OH) acid.C14:0_(OH) ketene.C10:0_(OH) ketene.C11:1 ketene,18.007,ppm
+1000.631,1000.6490191199999,B.Phosphate.C14:0_(OH) acid.C12:0_(OH) ketene.C10:0_(OH) ketene.C11:1 ketene,18.007,ppm
+976.606,976.6126341199999,B.Phosphate.C12:0_(OH) acid.C12:0_(OH) ketene.C10:0_(OH) ketene.C10:0_(OH) ketene,6.793,ppm
+774.4405,774.45573912,B.Phosphate.C12:0_(OH) acid.NIL.C10:0_(OH) ketene.C11:1 ketene,19.677,ppm
+774.4405,774.45573912,B.Phosphate.C12:1 acid.NIL.C10:0_(OH) ketene.C11:0_(OH) ketene,19.677,ppm
+648.4001,648.3876598100001,B.Phosphate.Water.NIL.C10:0_(OH) ketene.C16:0 ketene,19.186,ppm
+648.4001,648.38765912,B.Phosphate.C12:0_(OH) acid.C14:0 ketene.NIL.NIL,19.187,ppm
+648.4001,648.38765912,B.Phosphate.C14:0_(OH) acid.C12:0 ketene.NIL.NIL,19.187,ppm
+648.4001,648.38765881,B.Phosphate.Water.NIL.C12:0_(OH) ketene.C14:0 ketene,19.188,ppm
+648.4001,648.38765881,B.Phosphate.Water.NIL.C14:0_(OH) ketene.C12:0 ketene,19.188,ppm
+648.4001,648.38765881,B.Phosphate.Water.NIL.C16:0_(OH) ketene.C10:0 ketene,19.188,ppm
+630.3812,630.3770951199999,B.Phosphate.NIL.NIL.C10:0_(OH) ketene.C16:0 ketene,6.512,ppm
+630.3812,630.37709412,B.Phosphate.NIL.NIL.C16:0_(OH) ketene.C10:0 ketene,6.513,ppm
+630.3812,630.3770941199999,B.Phosphate.NIL.NIL.C12:0_(OH) ketene.C14:0 ketene,6.513,ppm
+630.3812,630.3770941199999,B.Phosphate.NIL.NIL.C14:0_(OH) ketene.C12:0 ketene,6.513,ppm
+448.2039,448.21002881,B.Phosphate.Water.NIL.C14:1 ketene.NIL,13.674,ppm
+448.2039,448.21002911999994,B.Phosphate.C14:1 acid.NIL.NIL.NIL,13.675,ppm
+448.2039,448.21002911999994,B.Phosphate.NIL.NIL.C14:0_(OH) ketene.NIL,13.675,ppm
+430.1977,430.19946412,B.Phosphate.NIL.NIL.C14:1 ketene.NIL,4.101,ppm
+350.232,350.23313319,B.Water.NIL.NIL.C14:1 ketene.NIL,3.236,ppm
+222.0179,222.01674912,B.Phosphate.NIL.NIL.NIL.NIL,5.184,ppm

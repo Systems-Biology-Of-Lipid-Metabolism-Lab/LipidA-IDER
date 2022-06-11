@@ -1,0 +1,21 @@
+NAME: Lipid A tri-acyl C4'-mono-phosphoryl  di-glucosamine [P-NIL/NIL-C14:0_(OH)/C12:0-NIL-C14:0_(OH)/NIL-NIL]
+PRECURSORMZ: 1053.66031139
+PRECURSORTYPE: [M-H]-
+RETENTIONTIME: 752.9238
+Comment: Scan=scan_0_0_1053.663_12.549; filename=ESK010_02_monoP_005_monoP_50V_r1_t1_b1_1053_1133.ms2||L2D=P/3/40/0/2
+Num Peaks: 15
+1053.66031139 10328 "[M-H]-"
+1035.64975 857 "[M-H]-H2O(dehydration)"
+853.48268 100 "[M-H]-C2'SecFA(acid)"
+768.42992 6814 "02A2"
+708.40879 767 "04A2"
+690.39822 15 "04A2-H2O(dehydration)"
+666.39822 46 "C"
+648.38766 67 "B||C-H2O(dehydration)"
+568.25229 327 "02A2-C2'SecFA(acid)"
+508.23116 134 "04A2-C2'SecFA(acid)"
+466.22059 15 "C-C2'SecFA(acid)"
+448.21003 55 "B-C2'SecFA(acid)||C-C2'SecFA(acid)-C4'Headgroup(-H2O)"
+430.19946 22 "B-C2'SecFA(acid)-C4'Headgroup(-H2O)"
+96.96907059 277 "Phosphate"
+78.9585059 695 "Phosphate*d"
