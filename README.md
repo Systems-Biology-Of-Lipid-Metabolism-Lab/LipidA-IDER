@@ -38,8 +38,8 @@ Once the files are loaded, LipidAIDER should show that the files are loaded:
 <br><img src='/images/selected_files.png' width="800" height="100"><br>
 
 
-If in any case, you would like to use non-default parameters, you may refer to the csv file in [\Settings\AnalysisParam_CGH.csv](\Settings\AnalysisParam_CGH.csv). 
-We suggest that you create a new copy following the same format as the original file, and then select it in the LipidAIDER GUI before running the analysis. 
+If you would like to use non-default parameters, you may refer to the csv file in [\Settings\AnalysisParam_CGH.csv](\Settings\AnalysisParam_CGH.csv) for the accepted settings for LipidAIDER. 
+We suggest that a new copy of the settings file be made in the same format as the original file, and then selecting it in the LipidAIDER GUI before running the analysis. 
 
 Once both the desired input .ms2 files and settings files have been selected, clicking the 'Run Analysis' will prompt LipidAIDER to start the analysis of the input files.
 
@@ -54,5 +54,5 @@ When using this code, or any part-thereof, please cite:
 
 ### Contact
 
-# License
+## License
 LipidAIDER is released under the [NTUItive Dual License](LICENSE.txt).
