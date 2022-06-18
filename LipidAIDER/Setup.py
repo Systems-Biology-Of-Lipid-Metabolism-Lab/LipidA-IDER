@@ -8,8 +8,6 @@ import os
 import datetime
 import copy
 import logging
-
-###Import Own Modules###
 from LipidAIDER.Hit_Dict import *
 from LipidAIDER.File_Handling import *
 
@@ -37,7 +35,7 @@ def upper_limit_ppm(num,ppm):
 def lower_limit_ppm(num,ppm):
     return (1-(ppm/1000000))*num 
 
-def binary_search_deep_array(array,num,threshold,mode):#array[][0] should be mz
+def binary_search_deep_array(array,num,threshold,mode):#array[][0] is mz
     upper_limit = return_upper_limit_function_from_mode(mode)(num,threshold)
     lower_limit = return_lower_limit_function_from_mode(mode)(num,threshold)
     array = [[float(k[0])]+k[1:] for k in array]
@@ -123,22 +121,6 @@ def create_directory(path):
     logger.info("Successfully created the directory {}".format(path))    
   else:
     logger.info("Directory {} already exists".format(path))    
-
-#TODO Jason: this is where we want to comment out so all intermediate files are preserved
-# def clear_directory(path,emphasis = False,delete_directory = False):
-#   try:
-#     for root, dirs, files in os.walk(path):
-#       no_files = len(files)
-#       for file in files:
-#           os.remove(os.path.join(root, file))
-#     if delete_directory:
-#       os.rmdir(path)
-#   except OSError:
-#       # logger.print ("Unable to clear directory {}".format(path),emphasis)
-#       logging.error("Unable to clear directory {}".format(path))
-#   else:
-#       # logger.print ("Successfully cleared the directory {} of {} files".format(path,no_files),emphasis)
-#       logging.error("Successfully cleared the directory {} of {} files".format(path,no_files))
 
 ###Logger###
 class Logger():
@@ -257,9 +239,6 @@ class Logger():
 
     def get_logger_batch_path(self):
       return self.batch_path
-
-#TODO Jason not sure about initializing the log here..    
-# logger = Logger()
 
 ###Frequency Dictionary###
 def add_key_to_dict(dictionary,output_key,exception_list = None,freq = 1):
@@ -508,7 +487,7 @@ class L2D_Manager:
 def generate_catalogue(library_name,sub_folder):    
     lib_path = os.path.join(os_lib_path,sub_folder,library_name)
     library = read_csv(lib_path)[2:]
-    #First we scan the list and catalogue the components as a dictionary of lists
+    #First, scan the list and catalogue the components as a dictionary of lists
     catalogue = {}
     for mass,name in library:
         if mass == "Component":
@@ -577,15 +556,10 @@ def pick_parent_ion(peak_list,precursor_peak):
     peak_list_org.append((peak,area,ppm,area_dist))#sorted by descending area
 
   for peak,area,ppm,area_dist in peak_list_org:
-    #if ppm <= 30 and area_dist > 5:
     if ppm <= 30:
       return peak
-    else: break #only look at the largest
-      
-  # for peak,area,ppm,area_dist in peak_list_org:
-  #   if area_dist > 5:
-  #     return peak
-  #   else: break #only look at the largest
+    else: 
+      break #only look at the largest
 
   return precursor_peak
 
@@ -615,7 +589,7 @@ class MSPfile:
     def get_L2D(self):
       return self.L2D
     
-    def add_peak (self,mass,area,fragment_name,lost_FA = None,loss_type = None):
+    def add_peak(self,mass,area,fragment_name,lost_FA = None,loss_type = None):
         if lost_FA != None and loss_type != None: ### Handle Lipid A fragmentation output
             fragment_name = fragment_name + " -{}({})".format(lost_FA,loss_type)
             if "[M-H]" not in fragment_name:
@@ -654,5 +628,4 @@ class MSPfile:
               area,
               fragment_name
               ))
-        #contents.append("\n")
         return contents

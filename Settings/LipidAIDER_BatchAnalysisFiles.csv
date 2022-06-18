@@ -1,0 +1,3 @@
+Experiment,Batch,MS2File,Pause,ParamFile
+monoP,demo,LipidA-IDER demo Ecoli monoP 110V.ms2,0.1,LipidAIDER_AnalysisParam.csv
+diP,demo,LipidA-IDER demo Ecoli diP 110V.ms2,0.1,LipidAIDER_AnalysisParam.csv

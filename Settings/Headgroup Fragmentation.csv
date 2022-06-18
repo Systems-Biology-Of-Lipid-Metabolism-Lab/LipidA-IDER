@@ -5,4 +5,5 @@ H4P2O7,Pyrophosphate,"Pyrophosphate*d,-H2O","Phosphate,-HPO3","Phosphate*d,-H3PO
 H2PO6,Pyrophosphate*d,"Phosphate,-HPO3",,,,
 H5P3O10,Triphosphate,"Triphosphate*d,-H2O","Pyrophosphate,-HPO3","Pyrophosphate*d,-H3PO4","Phosphate*d,-H4P2O7",
 ,P+Ara4N,"Phosphate*d,-Ara4N","Phosphate,-Ara4N*d",,,
-,Pyr+EtN,"Phosphate*d,-pEtN","Phosphate,-pEtN*d",,,
+,Pyr+Ara4N,"Phosphate*d,-PAra4N","Phosphate,-PAraP4N*d","Pyrophosphate,-Ara4N*d","Pyrophosphate*d,-Ara4N",
+,Pyr+EtN,"Phosphate*d,-pEtN","Phosphate,-pEtN*d","Pyrophosphate,-EtN*d","Pyrophosphate*d,-EtN",

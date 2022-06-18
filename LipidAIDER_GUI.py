@@ -16,13 +16,12 @@ from tkinter import END, HORIZONTAL, filedialog as fd
 from tkinter import messagebox
 
 def selectMs2File():
-    # reset list if needed
+    # initialise variables
     ms2_files_list = []
     filenames = []
     filestr = ''
 
     if ms2_filename_var.get():
-        #ms2_files_list = ms2_filename_var.get()
         ms2_filename.delete('1.0', END)
         ms2_filename_var.set(filestr)
         ms2_filename.insert(float(1),'')
@@ -75,13 +74,16 @@ def runAnalysis():
                 if not os.path.exists(file):
                     messagebox.showerror("Error", "Unable to find MS2 file.")
                     return
-    # check the settings file
+
+    # check settings file
     if not os.path.exists(settings_filename_var.get()):
         messagebox.showerror("Error", "Unable to find settings file.")
         return
-    # change the current working to where this script is located
+
+    # change current working to where this script is located
     os.chdir(os.path.dirname(__file__))
-    # run the analysis
+
+    # run analysis
     time_start = datetime.datetime.now()
     no_of_files = 0
     for file in ms2_files_list:
@@ -107,7 +109,7 @@ logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
 
-    # set up the logging
+    # set up logging
     log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Logger", datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
     os.makedirs(log_dir)
     logging.basicConfig(
@@ -124,7 +126,7 @@ if __name__ == "__main__":
     root.resizable(False, False)
     tk.Label(root, text="MS2 file:").grid(row=0, column=0, sticky=tk.W, pady=5, padx=5)
     tk.Label(root, text="Settings file:").grid(row=2, column=0, sticky=tk.W, pady=5, padx=5)
-    # field for the ms2 file
+    # field for .ms2 file
     filename_scrollbar = tk.Scrollbar(root,orient="vertical")
     filename_scrollbar.grid(row=0, column=2, sticky=tk.NS)
     ms2_filename_var = tk.StringVar()
@@ -139,8 +141,8 @@ if __name__ == "__main__":
     #ms2_filename.pack(side='bottom')
 
     filename_scrollbar.config(command=ms2_filename.yview)
-
     ms2_filename.config()
+
     # field for the settings file, use the default
     settings_scrollbar = tk.Scrollbar(root,orient="horizontal")
     settings_scrollbar.grid(row=3, column=1, sticky=tk.EW)

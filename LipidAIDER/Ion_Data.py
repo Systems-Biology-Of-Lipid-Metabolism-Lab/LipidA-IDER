@@ -63,7 +63,6 @@ class Ion_Data:
         else:
             return(0)
              
-        ###XUELI COMMENT 0: IF POSSIBLE INSTEAD OF CHOOSING TOP IONS, WE NEED TO CHANGE THIS TO FIND MINIMAL AREA/INTENSITY, THEN OBTAIN LIST WITH ALL SIGNALS THAT IS MINIMAL AREA/ INTENSITY +1
     def filter_ion_data(self, mode, threshold):
         if mode == "Top Ions":
             parent_ion = self.get_parent_ion()
@@ -73,7 +72,7 @@ class Ion_Data:
             removed = len(self.ion_list[adjusted_threshold:])
             removed_list = self.ion_list[adjusted_threshold:]
 
-            #We increase sensitivity for the 0 -260 m/z range to pick up HG anions
+            #Increase sensitivity for the 0 -260 m/z range to pick up HG anions
             supplement_low_mass = [x for x in self.ion_list if x< 260]
             supplement_low_mass.sort(reverse = True, key = self.get_area)
             supplement_no = 0
@@ -104,22 +103,15 @@ class Ion_Data:
             peaks = [(key,self.ion_dict[key]["Area"]) for key in self.ion_dict if calc_mDa(precursor,key)<1000]
             parent = pick_parent_ion(peaks,precursor)
             logger.info("Parent ion m/z: {}".format(round(parent,3)))
-            if parent not in self.ion_dict: #TODO Jason when would this happen
+            if parent not in self.ion_dict:
                 self.ion_dict[parent] = copy.deepcopy(Ion_Report)
-                self.ion_dict[parent]["Area"] = self.dummy_ion_mz #dummy value
+                self.ion_dict[parent]["Area"] = self.dummy_ion_mz
                 self.ion_dict[parent]["Nature"] = "Substitute"
                 logger.info("Precursor ion used as substitute for parent ion, peak area set to {}".format(self.dummy_ion_mz))
             self.parent_ion_mass = parent
             return self.parent_ion_mass
         else:
             return self.parent_ion_mass
-    ##XUELI COMMENT 1: THESE PARTS ARE WHERE NEUTRAL LOSS ARE CALCULATED. TWO FUNCTIONS NEEDED. 1) ONLY NEED TO CALULATE FOR IONS BETWEEN PARENT M/Z and M/Z 250
-      #2) QUALITY CHECK. 
- #if parent mz loss of FA present? (ie a hit for FA loss from the parent)
- #If parent mz loss of HG present? (ie a hit needed for HG loss from the parent)
- #if 1) absent but 2) present > ok
- #if 1) present but 2) absent > ok
- #But if both absent > quality of spectra is not perfect. Will have to penalize cos it likely is a lipid A with L2 ID, but can't be a L3 ID. 
 
     def get_neutral_loss_from_parent_fragment(self,parent_mass):
         neutral_losses = []
@@ -131,7 +123,6 @@ class Ion_Data:
         return neutral_losses
     
     def get_daughter_neutral_losses_for_ion(self,ion):
-        ##Index = ["Daughters,"Neutral Loss", "Hit","Hit Name", "Diff.","Mode"]
         ion_dict_daughters = self.ion_dict[ion]["Daughters"]
         if ion_dict_daughters != {}:
             return [ion_dict_daughters[key][2] for key in ion_dict_daughters] ###returns list of neutral losses by name
@@ -139,13 +130,12 @@ class Ion_Data:
             return []
         
     def get_parent_neutral_losses_for_ion(self,ion):
-        ##Index = ["Daughters,"Neutral Loss", "Hit","Hit Name", "Diff.","Mode"]
         ion_dict_parents = self.ion_dict[ion]["Parents"]
         if  ion_dict_parents != {}:
             return  [ion_dict_parents[key][2] for key in  ion_dict_parents] ###returns list of neutral losses by name
         else:
             return []
-    ##XUELI COMMENT 1: THESE PARTS ARE WHERE NEUTRAL LOSS ARE CALCULATED.END. 
+
     def get_path(self):
         return self.os_path
 
@@ -226,7 +216,7 @@ class Ion_Data:
                 total_area+= self.get_area(ion)
                 matched_ions.append(ion)
                 if save:
-                    self.ion_dict[ion]["Fragment Ions"]["No of Hits"] += 1 #we have multiple hits, we must use a different key for each
+                    self.ion_dict[ion]["Fragment Ions"]["No of Hits"] += 1 #Use a different key for cases with multiple hits
                     self.ion_dict[ion]["Fragment Ions"][fragment_name] = [round(fragment_mass,6),round(diff,3),mode]
                     self.fragment_ion_report.append([ion,fragment_mass,fragment_name,round(diff,3),mode])
             
@@ -246,7 +236,7 @@ class Ion_Data:
             if len(hit_list) >0:
                 for hit,diff in hit_list:
                     fragment_mass,fragment_name = hit[0],hit[1]
-                    self.ion_dict[ion]["Fragment Ions"]["No of Hits"] += 1 #we have multiple hits, we must use a different key for each
+                    self.ion_dict[ion]["Fragment Ions"]["No of Hits"] += 1 #Use a different key for cases with multiple hits
                     self.ion_dict[ion]["Fragment Ions"][fragment_name] = [str(round(fragment_mass,6)),str(round(diff,3)),mode]
                     self.fragment_ion_report.append([ion,fragment_mass,fragment_name,str(round(diff,3)),mode])
         
@@ -339,7 +329,7 @@ class Ion_Data:
         filename = self.name+"_IonReport_Frag_Ions_"+ parameters + ".csv"
         filename = os.path.join(self.os_path,filename)
         write_csv(filename,contents)
-#XUELI COMMENT1: THE NEUTRAL LOSS REPORT IS WHERE WE CAN TARGET TO FIND IF PARENT OR PARENT minus HEADGROUP ARE PRESENT.THIS IS WHERE THE REPORT IS BEING GENERATED. 
+
     def write_ion_report(self):
         if "Fragment Ions" not in self.readme_file:
             raise Exception ("Fragment Ions incomplete")

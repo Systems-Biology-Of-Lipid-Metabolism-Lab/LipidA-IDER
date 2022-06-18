@@ -4,7 +4,7 @@ import sys
 logger = logging.getLogger(__name__)
 
 ##############################################
-# New functions added by Bernett
+# New functions added
 ##############################################
 
 # Method to sort a descending series of floats by the standard competition ranking (https://en.wikipedia.org/wiki/Ranking).

@@ -1,0 +1,17 @@
+Comments,C4' Headgroup,C1 Headgroup,Fragments Analysed,Fragments Penalised,Component Order 1,Component Order 2,Component Order 3,Component Order 4
+Sandor et al,Water,Water,"Di-glucosamine,04A2,Z,C,04X0,13X1","04A2,04X0","seq,C3 FA,C3' Sec FA","seq,C2 Sec FA,C2' Sec FA,C3' FA",,
+Sandor et al,Phosphate,Water,"Di-glucosamine,04A2,02A2,B,C","04A2,02A2","group,C3' Sec FA,C3 FA","seq,C3' FA,C2 Sec FA,C2' Sec FA",,
+Sandor et al,Water,Phosphate,"Di-glucosamine,Y,Z,04X0,13X1","Y,Z,13X1","seq,C3 FA,C3' Sec FA","group,C2 Sec FA,C'2 Sec FA","seq,C3' FA","seq,C1 Headgroup"
+modified Sandor et al,Phosphate,Phosphate,"Di-glucosamine,04A2,B,C,02A2,Y","04A2,B","group,C1 Headgroup,C3' Sec FA,C3 FA","branch,seq,H20","group,C2 Sec FA,C3' FA","seq,C2' Sec FA"
+modified Pelletier et al,Pyrophosphate,Water,"Di-glucosamine,04A2,B,C,02A2,Y","04A2,B","group,C4' Headgroup,C3' Sec FA,C3 FA","branch,seq,H20","group,C2 Sec FA,C3' FA","seq,C2' Sec FA"
+modified Nowicki et al,Phosphate,Pyrophosphate,"Di-glucosamine,04A2,B,C,Y,Z","04A2,B","group,C1 Headgroup,C1 Headgroup,C3' Sec FA,C3 FA","branch,seq,H20","group,C2 Sec FA,C3' FA","seq,C2' Sec FA"
+modified Nowicki et al,Pyrophosphate,Phosphate,"Di-glucosamine,04A2,B,C,Y,Z","04A2,B","seq,C4' Headgroup","group,C1 Headgroup,C3' Sec FA,C3 FA","seq,C2 Sec FA,C3' FA,C2' Sec FA",
+modified Nowicki et al,Water,Triphosphate,"Di-glucosamine,B,C,Y,Z","Y,Z","seq,C1 Headgroup","group,C1 Headgroup,C3 FA,C3' Sec FA","seq,C2 Sec FA,C2' Sec FA,C3' FA",
+modified Jones et al,P+Ara4N,Water,"Di-glucosamine,04A2,02A2,B,C,Y",04A2,"group,C4' Headgroup,C3' Sec FA,C3 FA","seq,C3' FA,C2 Sec FA,C2' Sec FA",,
+modified Jones et al,Phosphate,P+Ara4N,"Di-glucosamine,04A2,02A2,B,C,Y",04A2,"seq,C1 Headgroup","group,C1 Headgroup,C3' Sec FA,C3 FA","seq,C3' FA,C2 Sec FA,C2' Sec FA",
+modified Jones et al,P+Ara4N,Phosphate,"Di-glucosamine,04A2,02A2,B,C,Y",04A2,"seq,C4' Headgroup","group,C1 Headgroup,C3' Sec FA,C3 FA","seq,C3' FA,C2 Sec FA,C2' Sec FA",
+modified Jones et al,P+Ara4N,P+Ara4N,"Di-glucosamine,04A2,02A2,B,C,Y",04A2,"seq,C4' Headgroup,C1 Headgroup","group,C1 Headgroup,C3' Sec FA,C3 FA","seq,C3' FA,C2 Sec FA,C2' Sec FA",
+modified Jones et al,Pyr+Ara4N,Water,"Di-glucosamine,04A2,02A2,B,C",04A2,"group,C4' Headgroup,C3' Sec FA,C3 FA","seq,C3' FA,C2 Sec FA,C2' Sec FA",,
+Level 3A (HG combined),Phosphate,Pyr+EtN,"Di-glucosamine,04A2,B,C,Y",04A2,"group,C1 Headgroup,C1 Headgroup,C3' Sec FA,C3 FA","seq,C3' FA,C2 Sec FA,C2' Sec FA",,
+Level 3A (HG combined),Pyr+EtN,Phosphate,"Di-glucosamine,04A2,B,C,Y",04A2,"group,C4' Headgroup,C1 Headgroup,C3' Sec FA,C3 FA","seq,C3' FA,C2 Sec FA,C2' Sec FA",,
+Level 3B,Pyr+EtN,Pyr+EtN,"Di-glucosamine,04A2,B,C,Y",04A2,"group,C4' Headgroup,C1 Headgroup,C1 Headgroup,C3' Sec FA,C3 FA","seq,C3' FA,C2 Sec FA,C2' Sec FA",,

@@ -52,7 +52,6 @@ def get_carbon_count_number(FA_string):
     try:
         return int(get_carbon_count (FA_string)[1:])
     except Exception:
-        # logger.print("Unknown carbon count for {}, returned 0.".format(FA_string),log_type = "Dev Notes")#TODO Jason logger not initialized. Use standard logging for errors
         logger.error("Unknown carbon count for {}, returned 0. log_type='Dev Notes'".format(FA_string))
         return 0
 

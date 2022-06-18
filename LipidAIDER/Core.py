@@ -52,7 +52,7 @@ class AutoAnalyser:
             "filter_FA_NL_Da_threshold":float,
             "score_cut_off_filename":str,
             "HG_chemical_composition_filename":str,
-            "total_area_minimum_cutoff":float,
+            "total_intensity_minimum_cutoff":float,
             "peaks_considered_top_n_ratio":float,
         }
 
@@ -69,7 +69,6 @@ class AutoAnalyser:
         self.reset_batch_files()
         self.create_lipid_frag_rules_lib()
 
-        ###Hidden Init###
         self.bin_error_list = ("No fatty acids found", "No fragments found")
 
         # load the score cut off
@@ -94,14 +93,14 @@ class AutoAnalyser:
          if boo == True or boo == False:
             self.settings["clear_libraries_after_analysis"] = boo
             
-    def is_hit_logical_check(self,hit_ion,hit_dict):#check against LpxA,LpxD,parent,NL...
+    def is_hit_logical_check(self,hit_ion,hit_dict): #check against LpxA,LpxD,parent,NL...
         NL_list = [x for x in self.ion_data.get_neutral_loss_from_parent_fragment(hit_ion) if x in self.FA_list]
         if len(NL_list) > 0:
             return neutral_loss_check(hit_dict,NL_list)
         else:
             return True
             
-    def preload_libraries(self):#We preload and clean some library files for permutation generation later to save time
+    def preload_libraries(self): #We preload and clean some library files for permutation generation later to save time
         #Sugars#
         logger.info(f"Loading fragments_lib")
         file = self.readSettingFile(self.settings["fragments_lib"], main_setting_folder="Libraries")[1:]
@@ -268,10 +267,6 @@ class AutoAnalyser:
     def pll_analysis(self):#TODO 
         with Pool(self.settings["parallel_analysis"]) as p:
             parallel_results = p.map(self.pFunc, self.ions)
-        # import pdb;
-        # pdb.set_trace()
-        # print("n_jobs=",self.settings["parallel_analysis"])
-        #parallel_results= Parallel(n_jobs=self.settings["parallel_analysis"], verbose=8)(delayed(self.individual_analysis)(i1,i2) for i1,i2 in self.ions)
         total_results = [x[0] for x in parallel_results]
         total_id = [x[1] for x in parallel_results if x[1] != None]
         list(map(lambda line: self.batch_results.extend(line), total_results))
@@ -308,7 +303,6 @@ class AutoAnalyser:
             return self.batch_results[1:],self.hit_level_2_id ###Un-adjusted score check
     
     def bin_RT(self):
-        #### Gek Huey: Add bin_RT() to perform binning by RT.
         ## Define position index of RT, area, RT_bin_id, bin_ref_flag
         RT_index=3
         area_index=4
@@ -402,7 +396,7 @@ class AutoAnalyser:
         # add the rt bin to the data
         for i in range(len(self.batch_results)):
             self.batch_results[i].insert(RT_bin_id_index, rts[i][6]) # add the RT bin id
-            self.batch_results[i].insert(bin_ref_flag_index, rts[i][7]) # Bernett, not sure what to do with this one
+            self.batch_results[i].insert(bin_ref_flag_index, rts[i][7])
         
         ### Put back header line
         self.batch_results.insert(0,header_line)
@@ -420,8 +414,6 @@ class AutoAnalyser:
                 self.individual_analysis(ion_data_name, ion_file)
                 results += self.batch_results[1:]
             self.batch_results = [self.batch_results[0]] + results
-            #list(itertools.starmap(self.individual_analysis,self.ions))
-    
         self.bin_RT()
         self.print_batch_results()
         self.ions = []
@@ -439,44 +431,36 @@ class AutoAnalyser:
         os_batch_path = os.path.join(self.log_dir, "Batch Output")
         os.makedirs(os_batch_path, exist_ok=True)
         filename = os.path.join(os_batch_path, filename+".csv")
-        # see if we want to output the new style clean up version or the old full version
+
+        # old full version output (not used)
         if self.verbose:
             write_csv(filename, self.batch_results)
+        # new version output (currently in use) 
         else:
-            selected = [i for i in range(len(self.batch_results[0])) if self.batch_results[0][i] in ("AnalysisParam File", "MS2 File", "Feature Scan ID", 
-                                                                                                     "RT (s)", "Total Height", "RT_Bin_SN", "RT_Bin_TopPeak", 
-                                                                                                     "Top N Peak Total Height", "Level 2 ID", "Chemical Formula", 
-                                                                                                     "Exp. Parent Ion", "Theoretical Parent Ion", "Difference", 
-                                                                                                     "Rank", "Sugar", "C4' Headgroup", "C1 Headgroup", "C3' FA", 
-                                                                                                     "C3' Sec FA", "C2' ketene", "C2' Sec FA", "C3 FA", "C2 ketene", 
-                                                                                                     "C2 Sec FA", "Peaks", "Final Score", "Score Dist.", "L2 Name", "L3 Name")]
+            selected = [i for i in range(len(self.batch_results[0])) if self.batch_results[0][i] in ("AnalysisParam File", "MS2 File", "Feature Scan ID","RT (s)", "Total Height", "RT_Bin_SN", "RT_Bin_TopPeak", "Top N Peak Total Height", "Level 2 ID", "Chemical Formula", "Exp. Parent Ion", "Theoretical Parent Ion", "Difference", "Rank", "Sugar", "C4' Headgroup", "C1 Headgroup", "C3' FA", "C3' Sec FA", "C2' ketene", "C2' Sec FA", "C3 FA", "C2 ketene", "C2 Sec FA", "Peaks", "Final Score", "Score Dist.", "L2 Name", "L3 Name")]
             o = list()
             for row in self.batch_results:
                 output_result = [i < len(row) and row[i] or "" for i in selected]
-                output_result.append(self.determine_if_HG_position_is_resolved(str(output_result[8]))) # entry point for 'HG Position Resolved?' column
+                output_result.append(self.determine_if_HG_position_is_resolved(str(output_result[8])))
                 o.append(output_result)
             write_csv(filename, o)
         return
 
-    def determine_if_HG_position_is_resolved(self,L2_ID):
+    def determine_if_HG_position_is_resolved(self, L2_ID):
         # return True or False
         result = L2_ID
         non_resolved_HG_types = ['PP', 'PPP', 'PPPEtN','PPAra4N']
-
         if '/' not in L2_ID:
             if L2_ID == "Level 2 ID":
                 return 'HG Position Resolved?'
             else:
                 return ''
-        
         L2_ID_split = L2_ID.split('/')
         HG_type = L2_ID_split[0]
-
         if any(non_resolved_HG_type in HG_type for non_resolved_HG_type in non_resolved_HG_types):
-            return 'False'
+            return 'Type3B'
         else:
-            return 'True'
-
+            return 'Type3A'
 
     def analyse(self,ion_file,ion_data_name):
         self.batch_results = [[
@@ -511,7 +495,7 @@ class AutoAnalyser:
         self.ion_lib_path = os.path.join(self.log_dir, "Libraries", ion_data_name)       
         create_directory(self.ion_lib_path)
         
-        #Neutral Loss #MAY BE RELATED TO XUELI COMMENT 1. 
+        #Neutral Loss
         self.ion_data.write_ion_list()
         self.ion_data.calc_neutral_loss(self.settings["neutral_loss_calc_threshold"])
 
@@ -552,24 +536,14 @@ class AutoAnalyser:
                 self.HG_list.append(HG)
                 logger.info("Added {} as headgroup @ {} @ {} {}".format(HG,mz,round(threshold,3),self.settings["neutral_loss_mode"]))
         
-        #Comparison with FA ## XUELI COMMENT1: THE NEUTRAL LOSS REPORT IS WHERE WE CAN TARGET THE TWO FUNCTIONS NEEDED. FUNCTION TO WRITE THE REPORT IS IN ION DATA.PY, def write_ion_report(self)
-        #1) ONLY NEED TO CALULATE FOR IONS BETWEEN PARENT M/Z and M/Z 250
-        #2) QUALITY CHECK. 
-        #if parent mz loss of FA present? (ie a hit for FA loss from the parent)
-        #If parent mz loss of HG present? (ie a hit needed for HG loss from the parent)
-        #if 1) absent but 2) present > ok
-        #if 1) present but 2) absent > ok
-        #But if both absent > quality of spectra is not perfect. Will have to penalize cos it likely is a lipid A with L2 ID, but can't be a L3 ID. 
         self.ion_data.compare_neutral_loss(self.settings["neutral_loss_mode"],self.settings["neutral_loss_threshold"],self.settings["neutral_loss_FA_lib_filename"],self.mz_FA_lib)
-        # Bernett, filtering the FA from further analysis
-        # not quite sure whether this would work correctly
         logger.info(f"FA NL row counts before filtering: {len(self.ion_data.neutral_loss_report)}")
         self.ion_data.neutral_loss_report = [ x for x in self.ion_data.neutral_loss_report if isinstance(x[1], str) or x[1] >= self.settings["filter_FA_NL_Da_threshold"] ]
         logger.info(f"FA NL row counts after filtering: {len(self.ion_data.neutral_loss_report)}")
 
         FA_NL_report = [line[4] for line in self.ion_data.write_neutral_loss()[1:]]
-        FA_CC_dict = {} #we only want the carbon count here, the rest are not too important atm
-        self.FA_list = []# this is the filtered list, carbon count only
+        FA_CC_dict = {}
+        self.FA_list = []
     
         if len(FA_NL_report) == 0 and self.settings["abort_if_no_FA"]:
             raise Exception ("No fatty acids found")
@@ -579,8 +553,8 @@ class AutoAnalyser:
                 add_key_to_dict(FA_CC_dict,get_carbon_count(FA))
         
         #(2) Neutral Loss Frequency Filter
-        #We clean the data for Fatty Acids; we note down the carbon count and add it to an internal library.       
-        #filter out low frequency FA
+        # Clean the data for Fatty Acids; Note down the carbon count and add it to an internal library.       
+        # filter out low frequency FA
         FA_total = sum(FA_CC_dict.values())
         for FA in FA_CC_dict:
             percent = get_percentage(FA_CC_dict[FA],FA_total,dp = 1)
@@ -590,14 +564,14 @@ class AutoAnalyser:
             else:
                 logger.info("Filtered {}, {}%".format(FA,percent))
 
-        #we add some default headgroups
+        # Add some default headgroups
         for default_HG in ["Water","Phosphate"]: #"P+GalN"
             if default_HG not in self.HG_list:
                 self.HG_list.append(default_HG)
 
         #sort lists...
         self.HG_list.sort();self.FA_list.sort()
-        #we need two separate FA lists... (1) ketene loss (2) acid losses
+        #Generate two separate FA lists: (1) ketene loss (2) acid losses
         self.FA_ketene_list_from_NL_analysis,self.FA_acid_list_from_NL_analysis = [],[]
         for count in self.FA_list: #carbon_count
             ketene = create_ketene_from_carbon_count(count)
@@ -605,10 +579,6 @@ class AutoAnalyser:
             self.FA_ketene_list_from_NL_analysis += [ketene,convert_unhydroxy_to_hydroxy(ketene)]#secondary acids
             self.FA_acid_list_from_NL_analysis += [convert_unhydroxy_to_hydroxy(acid),convert_sat_to_unsat(acid)]
 
-        # Bernett, this is where to add the score penalty if there is no parent ion or daughter ion
-        # the FA neutral loss report data is at self.ion_data.neutral_loss_report
-        # HG data in HG_NL_report
-        # raw ion list is at self.ion_data.ion_raw_list
         found_hg_loss = False
         found_fa_loss = False
         # check for HG loss
@@ -637,14 +607,12 @@ class AutoAnalyser:
         self.all_fragment_types_with_hits["Di-glucosamine"]["Max Mass"]= round(parent_ion_mass,3)+1
         self.all_fragment_types_with_hits["Di-glucosamine"]["Min Mass"]= 0
 
-        self.comparison_func = lambda hit_dict: LpxA_check(hit_dict,self.settings["LpxA_threshold"]) and LpxD_check(hit_dict,self.settings["LpxD_threshold"])\
-                               and parent_secondary_check(hit_dict)
-        
+        self.comparison_func = lambda hit_dict: LpxA_check(hit_dict,self.settings["LpxA_threshold"]) and LpxD_check(hit_dict,self.settings["LpxD_threshold"]) and parent_secondary_check(hit_dict)
 
         for frag_type in self.settings["fragments_type"]:
             
             logger.info("Analysing {} fragments...".format(frag_type))
-            #We generate a permutation library
+            #Generate a permutation library
             perm_lib_gen = self.create_perm_lib_gen_csv(frag_type)
             perm_filename = "{}_Fragments_{}".format(self.ion_data_name,frag_type)
 
@@ -656,7 +624,7 @@ class AutoAnalyser:
                                                    comparison_func = self.comparison_func)            
             self.ion_data.compare_ions(self.settings["fragments_mode"], self.settings["fragments_threshold"], self.readSettingFile(os.path.join(self.ion_lib_path, perm_lib))[2:], perm_lib)
             
-            #We analyse the fragment ions that match and add their components to the self.Lipid_dict
+            #Analyse the fragment ions that match and add their components to self.Lipid_dict
             Fragment_Ion_Report =self.ion_data.write_fragment_ions()[1:]
             fragment_components = self.components_in_frag_type(frag_type)
             logger.info("Verifying Hits for {} fragments...".format(frag_type))
@@ -685,7 +653,7 @@ class AutoAnalyser:
                 list_of_keys = filtered_fragment_ion_report.keys()
                 self.all_fragment_types_with_hits[frag_type] = {"No of Hit Ions": len(list_of_keys),\
                                                                 "Max Mass": round(max(list_of_keys),3)*1.1,\
-                                                                "Min Mass": round(min(list_of_keys),3)*0.9 }#we save for searching later (fragment score)
+                                                                "Min Mass": round(min(list_of_keys),3)*0.9 }#Save for searching later (fragment score)
             else:
                continue
             
@@ -821,14 +789,14 @@ class AutoAnalyser:
         #Find and rank the hits
         Lipid_final_data = self.ion_data.write_fragment_ions()[1:]
         Lipid_final_hits = len(Lipid_final_data)
-        if Lipid_final_hits == 0: #TODO Jason: can't I write 0 hits found instead of throwing an exception?
+        if Lipid_final_hits == 0:
             raise Exception("No lipid final hits found for library")
         logger.info("{} hits found for Auto-Analysis of {} from file {}".format(Lipid_final_hits,self.ion_data_name,ion_file))
         logger.info("Filtering hits...")
         fragment_components = self.components_in_frag_type("Di-glucosamine")
         contents = []
 
-        # troubleshooting files is verbose is true
+        # troubleshooting files if verbose is true
         if self.verbose:
             penalty_file = open(os.path.join(self.log_dir, "Intermediate Data", self.ion_data_name, "hit_penalty_details.tsv"), "w")
             penalty_header = ["hit_name", "fragment_name", "lost_FA", "loss_type", "rounded_mass", "hit_no_of_FA", "penalty", "backbone_fragment_penalty_multipler"]
@@ -854,7 +822,6 @@ class AutoAnalyser:
             lipid_type = get_lipid_type(hit_dict)
             self.hit_no_of_FA = len([component_hit for component,component_hit in hit_dict.items() if is_FA(component) and not is_component_hit_blank(component_hit)])
 
-            #Lipid A Scoring ##XUELI COMMENT 2: THERE IS A MISTAKE IN SCORING THAT NEEDS TO BE FIXED. SOMEHOW THE PENALTY WAS NOT IN THE FINAL SCORE. ALSO SCORE DISTANCE CALCULATED OUTPUT IS ALSO WRONG. 
             self.lipid_frag_counted_area = 0 #accounted area
             self.lipid_frag_counted_peaks = 0 #accounted peaks
             self.lipid_frag_counted_peaks_list = []#avoid double-counting
@@ -892,10 +859,9 @@ class AutoAnalyser:
                 logger.info(f"Total penalty {self.lipid_frag_total_penalty} exceeds 100%, setting it to 100%")
                 self.lipid_frag_total_penalty = 100.0
             logger.info("Total penalty: {}".format(round(self.lipid_frag_total_penalty,2)))
-            #hit_score = round((100*hit_score_frag_mod)-self.lipid_frag_total_penalty, 1)
             hit_score = round(100*hit_score_frag_mod * (1-self.lipid_frag_total_penalty/100), 1)
 
-            # Bernett, subtract the penalty for the 2 filters
+            # subtract the penalty for the 2 filters
             if found_hg_loss == False and found_fa_loss == False:
                 logger.info("HG and FA not found filter activated, subtracting score")
                 hit_score -= self.settings["filter_penalty"]
@@ -909,8 +875,8 @@ class AutoAnalyser:
 
             # check for the total area
             total_area_ok = True
-            if self.ion_data.get_total_area_of_fragments() < self.settings["total_area_minimum_cutoff"]:
-                logger.info(f"Total area {self.ion_data.get_total_area_of_fragments():.6f} is less than the minimum {self.settings['total_area_minimum_cutoff']:.2f}")
+            if self.ion_data.get_total_area_of_fragments() < self.settings["total_intensity_minimum_cutoff"]:
+                logger.info(f"Total area {self.ion_data.get_total_area_of_fragments():.6f} is less than the minimum {self.settings['total_intensity_minimum_cutoff']:.2f}")
                 total_area_ok = False
 
             # check for the peaks considered
@@ -1000,8 +966,7 @@ class AutoAnalyser:
                             HG_percent = round(100*self.ion_data.get_area(HG_mz)/self.lipid_frag_total_area,2)
                             msp_obj.add_peak(float(HG_hit),HG_percent,HG_name)
 
-                msp_obj.add_comment("L2D={}".format(msp_obj.get_L2D()))
-                #msp_obj.add_comment("Score={}".format(hit_score))
+                msp_obj.add_comment("L2D={}".format(msp_obj.get_L2D()))                
                 msp_obj.add_L3_name(level_3_id_name)
                 
                 ###Addition of Parent Ion###
@@ -1027,7 +992,7 @@ class AutoAnalyser:
                 # compute the hit_score_dist
                 if len(contents) != rank+1:
                     logger.info(f"Computing score_dist {hit_score} {contents[rank+1][-1]}")
-                    hit_score_dist = round(hit_score - (contents[rank+1][-1]), 1) # need to add the min_penalty as the next hit has not had it added yet, very strange code
+                    hit_score_dist = round(hit_score - (contents[rank+1][-1]), 1)
                     str_diff = compare_hit_dict(hit_dict,contents[rank+1][1])
                 else:
                     level_2_HG = self.level_2_id_string[:self.level_2_id_string.find("/")]
@@ -1041,7 +1006,7 @@ class AutoAnalyser:
                 else:
                     str_diff = ""
                 
-                hit_name = clean_name(hit_name)#sanitise name
+                hit_name = clean_name(hit_name)
                 logger.info("Hit Name: {}, Hit Score: {}, Score Dist: {}".format(hit_name,hit_score,hit_score_dist))
                 ###Batch Results##
                 (chem_comp, hit) = computeL2ChemicalFormula(self.level_2_id_string, self.HG_chemical_composition, self.settings["element_mass"])
@@ -1078,7 +1043,6 @@ class AutoAnalyser:
                     self.level_2_id_name,
                     level_3_id_name
                 ]
-                # Bernett, insert the correct peak number
                 temp[28] = msp_obj.num_peaks
                 self.batch_results.append(temp)
             contents
@@ -1087,7 +1051,7 @@ class AutoAnalyser:
             write_csv(filename,contents)
         else:
             (chem_comp, hit) = computeL2ChemicalFormula(self.level_2_id_string, self.HG_chemical_composition, self.settings["element_mass"])
-            #got hit but score all very low
+            #if got hit but score all very low
             temp = self.batch_analysis_parameters.copy()
             temp += [
                 self.ion_data_name,
@@ -1172,7 +1136,6 @@ class AutoAnalyser:
                                  self.FA_hydroxy_ketenes_list+self.FA_unsat_ketenes_list):
                     mass =self.FA_lib[FA]
                     contents.append([mass,FA])
-        #TODO Jason: 21/2/2022 find where 'PermLibGen' gets deleted
         filename = "PermLibGen_{}.csv".format(frag_type)
         pathname = os.path.join(self.ion_lib_path,filename)
         write_csv(pathname,contents)
@@ -1326,7 +1289,6 @@ class AutoAnalyser:
                         self.fragment_lipid(frag_type,fragment_name_mod,hit_dict_mod,lost_FA)#submit last one as component to be removed
                         fragment_combinations_evaluated.append([fragment_name_mod,lost_FA])
                     else:
-                        ###print(len(fragment_combinations_evaluated))
                         pass
                          
         #remove all
@@ -1490,10 +1452,7 @@ class AutoAnalyser:
                 self.lipid_frag_counted_area += self.lipid_frag_added_area
                 percent = round(100*self.lipid_frag_added_area/self.lipid_frag_total_area,2)
                 logger.info( "FOUND: #{}-<{}># as #{}# loss at mass {} for {} %".format(fragment_name, lost_FA, loss_type, rounded_mass, percent))
-                self.current_msp.add_peak(rounded_mass,percent,fragment_name,lost_FA,loss_type)
-           
-                ###Look for Unusual Neutral Losses###
-                ###self.find_unusual_neutral_losses_for_matched_ions(matched_ions,frag_type,fragment_name,hit_dict,lost_FA)                
+                self.current_msp.add_peak(rounded_mass,percent,fragment_name,lost_FA,loss_type)           
             else:
                 logger.info( "FOUND: #{}-<{}># as #{}# loss at mass {} for 0 %".format(fragment_name,lost_FA,loss_type,rounded_mass))
                 self.current_msp.add_peak(rounded_mass,0,fragment_name,lost_FA,loss_type)

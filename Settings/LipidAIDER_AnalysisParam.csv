@@ -5,7 +5,7 @@ neutral_loss_HG_lib_filename,BBLib_Common_Neutral_Loss.csv
 anion_HG_lib_filename,BBLib_Common_Anions.csv
 level_2_lib_filename,Lib_Level_2_ID.csv
 score_cut_off_filename,filter_lipid_hit_min_score_exceptions.csv
-fragment_rules_filename,FragmentRules.csv
+fragment_rules_filename,LipidAIDER_FragRule.csv
 filter_penalty,30
 filter_FA_NL_Da_threshold,250
 neutral_loss_mode,mDa
@@ -27,11 +27,11 @@ carbon_count_FA_lower_threshold,10
 carbon_count_FA_upper_threshold,16
 non_labile_secondary_FA,C'2 Sec FA
 missing_fragment_score_penalty,5
-backbone_fragment_penalty_multiplier,10
+backbone_fragment_penalty_multiplier,20
 frag_types_with_penalty,
 clear_previous_data,TRUE
 clear_libraries_after_analysis,TRUE
 RT_bin_window,18
 HG_chemical_composition_filename,HG.d_Formula.csv
-total_area_minimum_cutoff,500
+total_intensity_minimum_cutoff,500
 peaks_considered_top_n_ratio,0.7
