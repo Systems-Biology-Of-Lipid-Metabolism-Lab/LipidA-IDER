@@ -82,7 +82,7 @@ Upon completion of the analysis. the generated output will be found in the '\Log
 i.e. if the code was run on 11 Jun 2022 at 2104 hours, the 'Batch Output' folder would be found here: [\Logger\20220610_182340](Logger/20220611_210413).
 
 ## For developers:
-The functions and scripts for further development can be found in the [\LipidA-IDER](/LipidA-IDER) subfolder. 
+The functions and scripts for further development can be found in the [\LipidAIDER](/LipidAIDER) subfolder. 
 
 # Credits
 When using code(s) in this repository, or any part-thereof, do help us by citing the authors of this paper:
