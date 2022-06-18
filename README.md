@@ -44,13 +44,13 @@ For more info on the definition of each parameter, refer to: [\Settings\README.m
 # Running LipidA-IDER
 ## For generic users (GUI option):
 Upon running [LipidAIDER_GUI.py](LipidAIDER_GUI.py) as seen from Step 3a, there will be a pop-up window that appears like this:
-<br><img src='/images/init_ss.png' width="800" height="150">
+<br><img src='/images/init_ss.png' width="800" height="170">
 
 
 To load files, simply click the 'select' button here to open the file directory to select the input .ms2 file(s) for analysis:
-<br><img src='/images/load_ms2.png' width="800" height="150"><br>
+<br><img src='/images/load_ms2.png' width="800" height="170"><br>
 Once the files are loaded, LipidA-IDER should show that the files are loaded:
-<br><img src='/images/selected_files.png' width="800" height="150"><br>
+<br><img src='/images/selected_files.png' width="800" height="170"><br>
 
 If you would like to modify parameters to better suit your data, you may do so by changing the relevant setting values in the csv file found in [\Settings\LipidAIDER_AnalysisParam.csv](/Settings/LipidAIDER_AnalysisParam.csv). 
 You may refer to the previous section on `Preparing parameter settings` for more information. 
@@ -90,7 +90,7 @@ When using code(s) in this repository, or any part-thereof, do help us by citing
 >J.Y-X Loh,
 >M. Lizwan,
 >S.C.M. Chan,
->J. M C Kwan,
+>J.M.C. Kwan,
 >T.P. Lim,
 >T.H. Koh,
 >L-Y. Hsu,
