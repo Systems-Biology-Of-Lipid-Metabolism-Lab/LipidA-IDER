@@ -1,6 +1,6 @@
 # LipidAIDER
 
-LipidA-IDER is an automated structure annotation tool for systems-level scale identification of lipid A from high resolution tandem mass spectrometry for .ms2 files.
+LipidA-IDER is an automated structure annotation tool for systems-level scale identification of lipid A from high resolution tandem mass spectrometry (MS2) data.
 
 # How to Install and Run
 
@@ -43,7 +43,7 @@ For more info on the definition of each parameter, refer to: [\Settings\README.m
 
 # Running LipidA-IDER
 ## For generic users (GUI option):
-Upon running [LipidAIDER_GUI.py](LipidAIDER_GUI.py) as seen from Step 3a, there will be a pop-up window that appears like this:
+Upon running [LipidAIDER_GUI.py](LipidAIDER_GUI.py) as seen from Step 3a, there will be a pop-up window that appears as follows:
 <br><img src='/images/init_ss.png' width="800" height="170">
 
 
