@@ -35,7 +35,7 @@ def upper_limit_ppm(num,ppm):
 def lower_limit_ppm(num,ppm):
     return (1-(ppm/1000000))*num 
 
-def binary_search_deep_array(array,num,threshold,mode):#array[][0] is mz
+def binary_search_deep_array(array,num,threshold,mode):#array[][0] should be mz
     upper_limit = return_upper_limit_function_from_mode(mode)(num,threshold)
     lower_limit = return_lower_limit_function_from_mode(mode)(num,threshold)
     array = [[float(k[0])]+k[1:] for k in array]
@@ -302,8 +302,8 @@ class L2D_Manager:
           "36.02": "FREE_OH",
           "115.99": "P", "195.95": "PP", "275.92": "PPP", "355.89": "PPPP",
           "240.00": "PPEtN","362.00": "PPEtNPEtN","318.96":"PPPEtN","441.97":"PPEtNPPEtN",
-          "247.05":"PAra4N","378.10":"PAra4NAra4N","327.01":"PPAra4N","458.07":"PAra4NPAra4N",
-          "518.09":"PGalNPGalN"
+          "247.05":"PAra4N","378.10":"PAra4NAra4N","327.01":"PPAra4N","406.98":"PPPAra4N","458.07":"PAra4NPAra4N",
+          "277.06":"PGalN","357.03":"PPGalN","518.09":"PGalNPGalN"
         }
         
     def get_file_number_from_filename(self,filename):
@@ -487,7 +487,7 @@ class L2D_Manager:
 def generate_catalogue(library_name,sub_folder):    
     lib_path = os.path.join(os_lib_path,sub_folder,library_name)
     library = read_csv(lib_path)[2:]
-    #First, scan the list and catalogue the components as a dictionary of lists
+    #First we scan the list and catalogue the components as a dictionary of lists
     catalogue = {}
     for mass,name in library:
         if mass == "Component":
@@ -589,7 +589,7 @@ class MSPfile:
     def get_L2D(self):
       return self.L2D
     
-    def add_peak(self,mass,area,fragment_name,lost_FA = None,loss_type = None):
+    def add_peak (self,mass,area,fragment_name,lost_FA = None,loss_type = None):
         if lost_FA != None and loss_type != None: ### Handle Lipid A fragmentation output
             fragment_name = fragment_name + " -{}({})".format(lost_FA,loss_type)
             if "[M-H]" not in fragment_name:
