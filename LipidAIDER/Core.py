@@ -449,16 +449,38 @@ class AutoAnalyser:
                 output_result = [i < len(row) and row[i] or "" for i in selected]
                 # biochemistry comments
                 if len(o) > 0:
-                    comments = []
+                    comments = {}
                     for comment in self.biochemistry_comments:
                         output_index = o[0].index(comment[1])
+                        found = False # set found to false
+                        # search for present
                         if comment[2] == "Present" and output_result[output_index] != "NIL" and output_result[output_index] != "":
-                            comments.append(comment[3])
+                            found = True
+                        # search for absent
                         elif comment[2] == "Absent" and output_result[output_index] == "NIL":
-                            comments.append(comment[3])
+                            found = True
+                        # search for specific text
                         elif output_result[output_index].find(comment[2]) != -1:
-                            comments.append(comment[3])
-                    output_result.append(",".join(comments))
+                            found = True
+                        # if found
+                        if found:
+                            k = (comment[0], comment[1])
+                            if not k in comments:
+                                comments[k] = []
+                            comments[k].append((comment[2], comment[3]))
+                    # post process the comments
+                    if len(comments) > 0:
+                        # if there is something more specific than Present or Absent, remove all Present and Absent
+                        for key in comments:
+                            # check if there is something more specific than Present or Absent
+                            if len([ x for x in comments[key] if x[0] not in ("Present", "Absent") ]) > 0:
+                                # remove all Present and Absent
+                                comments[key] = [ x for x in comments[key] if x[0] not in ("Present", "Absent") ]
+                        # post process the dictionary to remove the search term
+                        comments = { k : [ x[1] for x in v ] for (k,v) in comments.items() }
+                        output_result.append(", ".join([ f"{' '.join(k)}[{','.join(v)}]" for (k,v) in comments.items() ]))
+                    else:
+                        output_result.append("")
                 else:
                     output_result.append("Comments : Biochemistry")
                 # flag for HG position resolved state

@@ -1,0 +1,6 @@
+Logger/
+LipidAIDER/__pycache__/
+.DS_Store
+.vscode/
+Source/small_test.ms2
+lipidaider.code-workspace
