@@ -1,0 +1,15 @@
+Modification type,Search column,Search keyword,Comment
+Acylation,C3' Sec FA,Present,LpxM
+Acylation,C3' Sec FA,C16:0,PagPPa (C16:0)
+Acylation,C3' Sec FA,C16:0,LpxJHp (C16:0)
+Acylation,C2' Sec FA,C16:1,LpxP (C16:1)
+Acylation,C2 Sec FA,C16:0,PagP (C16:0) 
+Acylation,C2 Sec FA,Present,LpxL2Pa
+Acylation,C2 Sec FA,Present,LpxMAb
+Decylation,C3' FA,Absent,LpxR
+Decylation,C3 FA,Absent,PagL
+Hydroxylation (OH),C3' Sec FA,OH,LpxO (Salmonella)
+Hydroxylation (OH),C2' Sec FA,OH,LpxO (Burkholderia)
+Hydroxylation (OH),C2' Sec FA,OH,LpxO1 (Pseudomonas)
+Hydroxylation (OH),C2' Sec FA,OH,LpxO (Acinetobacter)
+Hydroxylation (OH),C2 Sec FA,OH,LpxO2 (Pseudomonas)

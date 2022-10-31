@@ -35,3 +35,4 @@ RT_bin_window,18
 HG_chemical_composition_filename,HG.d_Formula.csv
 total_intensity_minimum_cutoff,500
 peaks_considered_top_n_ratio,0.7
+biochemistry_comments_filename,Biochemistry_Comments.csv

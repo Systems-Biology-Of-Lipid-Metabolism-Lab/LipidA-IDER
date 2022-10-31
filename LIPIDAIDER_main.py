@@ -141,7 +141,7 @@ if __name__ == '__main__':
                 sys.exit(1)
 
     # change the current working to where this script is located
-    os.chdir(os.path.dirname(__file__))
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     logger.info(f"Processing with {len(analysis_files)} analysis files.")
     print(opt.verbose)
     main(analysis_files, verbose=opt.verbose)

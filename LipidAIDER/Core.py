@@ -54,6 +54,7 @@ class AutoAnalyser:
             "HG_chemical_composition_filename":str,
             "total_intensity_minimum_cutoff":float,
             "peaks_considered_top_n_ratio":float,
+            "biochemistry_comments_filename":str,
         }
 
         for setting,value in Param_file[1:]:
@@ -162,6 +163,11 @@ class AutoAnalyser:
             line = { header[i] : line[i] for i in range(len(header)) }
             self.HG_chemical_composition[line["HG"]] = { k : int(v) for (k, v) in line.items() if k != "HG" }
 
+        # biochemistry comments
+        logger.info(f"Loading biochemistry_comment_filename")
+        self.biochemistry_comments = self.readSettingFile(self.settings["biochemistry_comments_filename"], main_setting_folder="Libraries")[1:]
+        logger.info(f"Loaded {len(self.biochemistry_comments)} biochemistry comments")
+
         #Level 2 IDs#
         self.reset_L2D()
         
@@ -184,11 +190,11 @@ class AutoAnalyser:
             "FA found",
             "HG found",
             "Level 2 ID",
-            "Chemical Formula",
+            "Molecular Formula [M]",
             "Exp. Parent Ion",
             "Theoretical Parent Ion",
             "Difference",
-            "Rank"] + self.components_in_frag_type("Di-glucosamine")+ ["Rel. Penalty","Frag","Peaks","Final Score", "Penalty number", "Total Hit FA", "Penalty", "Backbone Fragment Penalty number", "Backbone Fragment Penalty multiplier", "Peaks considered", "Score Dist.", "Found HG", "Found FA", "L2 Name","L3 Name"]]
+            "Rank"] + self.components_in_frag_type("Di-glucosamine")+ ["Rel. Penalty","Frag","Peaks","Final Score", "Penalty number", "Total Hit FA", "Penalty", "Backbone Fragment Penalty number", "Backbone Fragment Penalty multiplier", "Peaks considered", "Score Dist.", "Found HG", "Found FA", "L2 Name","L3 Name","Comments : Biochemistry"]]
             
     def set_batch_name(self,name):
         self.batch_name = str(name).replace(" ","_")
@@ -437,10 +443,25 @@ class AutoAnalyser:
             write_csv(filename, self.batch_results)
         # new version output (currently in use) 
         else:
-            selected = [i for i in range(len(self.batch_results[0])) if self.batch_results[0][i] in ("AnalysisParam File", "MS2 File", "Feature Scan ID","RT (s)", "Total Height", "RT_Bin_SN", "RT_Bin_TopPeak", "Top N Peak Total Height", "Level 2 ID", "Chemical Formula", "Exp. Parent Ion", "Theoretical Parent Ion", "Difference", "Rank", "Sugar", "C4' Headgroup", "C1 Headgroup", "C3' FA", "C3' Sec FA", "C2' ketene", "C2' Sec FA", "C3 FA", "C2 ketene", "C2 Sec FA", "Peaks", "Final Score", "Score Dist.", "L2 Name", "L3 Name")]
+            selected = [i for i in range(len(self.batch_results[0])) if self.batch_results[0][i] in ("AnalysisParam File", "MS2 File", "Feature Scan ID","RT (s)", "Total Height", "RT_Bin_SN", "RT_Bin_TopPeak", "Top N Peak Total Height", "Level 2 ID", "Molecular Formula [M]", "Exp. Parent Ion", "Theoretical Parent Ion", "Difference", "Rank", "Sugar", "C4' Headgroup", "C1 Headgroup", "C3' FA", "C3' Sec FA", "C2' ketene", "C2' Sec FA", "C3 FA", "C2 ketene", "C2 Sec FA", "Peaks", "Final Score", "Score Dist.", "L2 Name", "L3 Name")]
             o = list()
             for row in self.batch_results:
                 output_result = [i < len(row) and row[i] or "" for i in selected]
+                # biochemistry comments
+                if len(o) > 0:
+                    comments = []
+                    for comment in self.biochemistry_comments:
+                        output_index = o[0].index(comment[1])
+                        if comment[2] == "Present" and output_result[output_index] != "NIL" and output_result[output_index] != "":
+                            comments.append(comment[3])
+                        elif comment[2] == "Absent" and output_result[output_index] == "NIL":
+                            comments.append(comment[3])
+                        elif output_result[output_index].find(comment[2]) != -1:
+                            comments.append(comment[3])
+                    output_result.append(",".join(comments))
+                else:
+                    output_result.append("Comments : Biochemistry")
+                # flag for HG position resolved state
                 output_result.append(self.determine_if_HG_position_is_resolved(str(output_result[8])))
                 o.append(output_result)
             write_csv(filename, o)
@@ -475,11 +496,11 @@ class AutoAnalyser:
             "FA found",
             "HG found",
             "Level 2 ID",
-            "Chemical Formula",
+            "Molecular Formula [M]",
             "Exp. Parent Ion",
             "Theoretical Parent Ion",
             "Difference",
-            "Rank"] + self.components_in_frag_type("Di-glucosamine")+ ["Rel. Penalty","Frag","Peaks","Final Score", "Penalty number", "Total Hit FA", "Penalty", "Backbone Fragment Penalty number", "Backbone Fragment Penalty multiplier", "Peaks considered", "Score Dist.", "Found HG", "Found FA", "L2 Name","L3 Name"]]
+            "Rank"] + self.components_in_frag_type("Di-glucosamine")+ ["Rel. Penalty","Frag","Peaks","Final Score", "Penalty number", "Total Hit FA", "Penalty", "Backbone Fragment Penalty number", "Backbone Fragment Penalty multiplier", "Peaks considered", "Score Dist.", "Found HG", "Found FA", "L2 Name","L3 Name","Comments : Biochemistry"]]
         #Setting Up
         logger.info("Opening {}".format(ion_file))
         self.ion_data_name = ion_data_name
