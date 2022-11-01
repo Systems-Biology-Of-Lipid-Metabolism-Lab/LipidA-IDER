@@ -478,7 +478,7 @@ class AutoAnalyser:
                                 comments[key] = [ x for x in comments[key] if x[0] not in ("Present", "Absent") ]
                         # post process the dictionary to remove the search term
                         comments = { k : [ x[1] for x in v ] for (k,v) in comments.items() }
-                        output_result.append(", ".join([ f"{' '.join(k)}[{','.join(v)}]" for (k,v) in comments.items() ]))
+                        output_result.append("; ".join([ f"[{','.join(v)}]" for (k,v) in comments.items() ]))
                     else:
                         output_result.append("")
                 else:
