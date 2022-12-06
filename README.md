@@ -4,7 +4,7 @@ LipidA-IDER is an automated structure annotation tool for systems-level scale id
 
 # How to Install and Run
 
-Step 0: Install git (if you have not done so before). Instructions [learn how to set up git here](https://github.com/git-guides/install-git)
+Step 0: Install git (if you have not done so before). Instructions to [learn how to set up git here](https://github.com/git-guides/install-git)
 
 Step 1: Open the terminal in the directory where LipidA-IDER is in. You can use the following command to do so:
 ~~~
@@ -58,7 +58,7 @@ You may refer to the previous section on `Preparing parameter settings` for more
 Once both the desired input .ms2 files and settings files have been selected, clicking the 'Run Analysis' will prompt LipidA-IDER to start the analysis of the input files.
 
 Upon completion of the analysis. the generated output will be found in the '\Logger\<YYYYMMDD_HHMMSS>\Batch Output' subfolder. 
-i.e. if the code was run on 11 Jun 2022 at 2104 hours, the 'Batch Output' folder would be found here: [\Logger\20220610_182340](Logger/20220611_210413).
+i.e. if the code was run on 11 Jun 2022 at 2104 hours, the 'Batch Output' folder would be found here: [\Logger\20220611_210413](Logger/20220611_210413).
 
 ## For generic users (CLI/Terminal inputs):
 To [LIPIDAIDER_main.py](LIPIDAIDER_main.py), prepare the batch file using templates [\Settings\LipidAIDER_BatchAnalysisFiles.csv](/Settings/LipidAIDER_BatchAnalysisFiles.csv) to input the analysis parameter file and data files, and [\Settings\LipidAIDER_AnalysisParam.csv](/Settings/LipidAIDER_AnalysisParam.csv) to edit analysis parameters, based on the MS-data nature. 
@@ -79,7 +79,7 @@ $ python LIPIDAIDER_main.py -h
 ~~~ 
 
 Upon completion of the analysis. the generated output will be found in the '\Logger\<YYYYMMDD_HHMMSS>\Batch Output' subfolder. 
-i.e. if the code was run on 11 Jun 2022 at 2104 hours, the 'Batch Output' folder would be found here: [\Logger\20220610_182340](Logger/20220611_210413).
+i.e. if the code was run on 11 Jun 2022 at 2104 hours, the 'Batch Output' folder would be found here: [\Logger\20220611_210413](Logger/20220611_210413).
 
 ## For developers:
 The functions and scripts for further development can be found in the [\LipidAIDER](/LipidAIDER) subfolder. 
