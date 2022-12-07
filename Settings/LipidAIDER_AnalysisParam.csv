@@ -19,8 +19,8 @@ filter_ion_data_mode,Top Ions
 filter_NL_threshold,10
 filter_lipid_components_threshold,5
 filter_top_lipid_hits,5
-filter_lipid_hit_min_score,40
-filter_lipid_hit_min_peaks,3
+filter_lipid_hit_min_score,35
+filter_lipid_hit_min_peaks,4
 LpxA_threshold,2
 LpxD_threshold,0
 carbon_count_FA_lower_threshold,10
