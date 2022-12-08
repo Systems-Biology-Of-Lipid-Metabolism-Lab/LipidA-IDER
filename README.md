@@ -8,7 +8,7 @@ Step 0: Install git (if you have not done so before). Instructions [learn how to
 
 Step 1: Open the terminal in the directory where LipidA-IDER is in. You can use the following command to do so:
 ~~~
-$ cd \PATH_TO_LipidA-IDER
+$ cd <PATH_TO_LipidA-IDER>
 ~~~
 
 Step 2: To clone the repository enter the command into the terminal:
@@ -58,19 +58,19 @@ You may refer to the previous section on `Preparing parameter settings` for more
 Once both the desired input .ms2 files and settings files have been selected, clicking the 'Run Analysis' will prompt LipidA-IDER to start the analysis of the input files.
 
 Upon completion of the analysis. the generated output will be found in the '\Logger\<YYYYMMDD_HHMMSS>\Batch Output' subfolder. 
-i.e. if the code was run on 11 Jun 2022 at 2104 hours, the 'Batch Output' folder would be found here: [\Logger\20220610_182340](Logger/20220611_210413).
+i.e. if the code was run on 11 Jun 2022 at 2104 hours, the 'Batch Output' folder would be found here: [\Logger\20220611_210413](Logger/20220611_210413).
 
 ## For generic users (CLI/Terminal inputs):
 To [LIPIDAIDER_main.py](LIPIDAIDER_main.py), prepare the batch file using templates [\Settings\LipidAIDER_BatchAnalysisFiles.csv](/Settings/LipidAIDER_BatchAnalysisFiles.csv) to input the analysis parameter file and data files, and [\Settings\LipidAIDER_AnalysisParam.csv](/Settings/LipidAIDER_AnalysisParam.csv) to edit analysis parameters, based on the MS-data nature. 
 
 When ready the settings are ready, entering the following command will run LipidA-IDER on the demo files based on the selected settings: 
 ~~~
-$python LIPIDAIDER_main.py
+$ python LIPIDAIDER_main.py
 ~~~
 
 If you wish to run LipidA-IDER on a file of your choice, the following command will enable you to run LipidA-IDER on the selected file:
 ~~~
-$python LIPIDAIDER_main.py -m <RELATIVE_PATH_TO_MS2_FILE>
+$ python LIPIDAIDER_main.py -m <PATH_TO_MS2_FILE>
 ~~~
 
 Alternatively, you may enter the following command for more user-defined command and flag options:
@@ -79,7 +79,7 @@ $ python LIPIDAIDER_main.py -h
 ~~~ 
 
 Upon completion of the analysis. the generated output will be found in the '\Logger\<YYYYMMDD_HHMMSS>\Batch Output' subfolder. 
-i.e. if the code was run on 11 Jun 2022 at 2104 hours, the 'Batch Output' folder would be found here: [\Logger\20220610_182340](Logger/20220611_210413).
+i.e. if the code was run on 11 Jun 2022 at 2104 hours, the 'Batch Output' folder would be found in the subdirectory: [\Logger\20220610_182340](Logger/20220611_210413).
 
 ## For developers:
 The functions and scripts for further development can be found in the [\LipidAIDER](/LipidAIDER) subfolder. 
