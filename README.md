@@ -35,7 +35,7 @@ Settings: Output format: .ms2, Filters: Peak Picking, Algorithm: CWT, MS Levels:
 # Preparing parameter settings
 For users who will be using default settings, you may skip this section.
 
-The default parameters are provided in [\Settings\LipidAIDER_AnalysisParam.csv]. 
+The default parameters are provided in [\Settings\LipidAIDER_AnalysisParam.csv](/Settings/LipidAIDER_AnalysisParam.csv). 
 Users may edit this file to according to the nature of their data. The default settings for Lipid A has been recorded in [\Settings\README.md](/Settings/README.md)
 It is also possible to create a duplicate settings file to save preset settings, and then selecting a saved preset it in the LipidA-IDER GUI/CLI. More info on how to select the settings as mentioned in the `For generic users (GUI option)` and `For generic users (CLI/Terminal inputs)` sections before running the analysis. 
 
