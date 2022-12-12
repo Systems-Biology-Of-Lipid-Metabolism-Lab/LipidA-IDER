@@ -95,7 +95,7 @@ When using code(s) in this repository, or any part-thereof, do help us by citing
 >T.H. Koh,
 >L-Y. Hsu,
 >B.T.K. Lee,
-doi: TBC
+doi: https://doi.org/10.1021/acs.analchem.1c03566 
 
 ## Contact
 microbialipidb@gmail.com
